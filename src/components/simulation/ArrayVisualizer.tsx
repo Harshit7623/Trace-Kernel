@@ -135,51 +135,72 @@ export function ArrayVisualizer({ spec }: ArrayVisualizerProps) {
       </div>
 
       <div className="overflow-x-auto">
-        <div className="flex h-52 min-w-max items-end justify-center gap-2 p-6">
-          {items.map((item, index) => {
-            const isActive = activeIndices.includes(index);
-            const height = Math.max(
-              12,
-              Math.round((Math.abs(item.value) / largestValue) * 144),
-            );
-
-            return (
-              <motion.div
-                key={item.id}
-                layout
-                role="button"
-                tabIndex={0}
-                aria-label={`Select array value ${item.value} at index ${index}`}
-                onClick={() => selectBar(index, item.value)}
-                onKeyDown={(event) => {
-                  if (event.key === "Enter" || event.key === " ") {
-                    event.preventDefault();
-                    selectBar(index, item.value);
-                  }
-                }}
-                className="flex w-8 cursor-pointer flex-col items-center gap-2 rounded-md outline-none focus-visible:ring-2 focus-visible:ring-accent-algorithms"
-                transition={transition}
+        {items.length === 0 ? (
+          <div
+            className="grid h-52 min-w-max place-items-center rounded-2xl border border-border bg-surface p-6 text-center"
+            role="status"
+          >
+            <div>
+              <div
+                className="mx-auto flex h-24 items-end justify-center gap-2"
+                aria-hidden="true"
               >
+                <i className="h-9 w-7 rounded-t-md border border-border bg-surface-hover" />
+                <i className="h-16 w-7 rounded-t-md border border-border bg-surface-hover" />
+                <i className="h-12 w-7 rounded-t-md border border-border bg-surface-hover" />
+              </div>
+              <p className="mt-3 font-mono text-xs text-muted">
+                This simulation starts with an empty array.
+              </p>
+            </div>
+          </div>
+        ) : (
+          <div className="flex h-52 min-w-max items-end justify-center gap-2 p-6">
+            {items.map((item, index) => {
+              const isActive = activeIndices.includes(index);
+              const height = Math.max(
+                12,
+                Math.round((Math.abs(item.value) / largestValue) * 144),
+              );
+
+              return (
                 <motion.div
-                  animate={{
-                    height: `${height}px`,
-                    opacity: isActive ? 1 : 0.6,
-                    scale: isActive ? 1.06 : 1,
+                  key={item.id}
+                  layout
+                  role="button"
+                  tabIndex={0}
+                  aria-label={`Select array value ${item.value} at index ${index}`}
+                  onClick={() => selectBar(index, item.value)}
+                  onKeyDown={(event) => {
+                    if (event.key === "Enter" || event.key === " ") {
+                      event.preventDefault();
+                      selectBar(index, item.value);
+                    }
                   }}
-                  className={`w-full rounded-t-md ${
-                    isActive
-                      ? "bg-accent-algorithms"
-                      : "bg-accent-algorithms/60"
-                  }`}
+                  className="flex w-8 cursor-pointer flex-col items-center gap-2 rounded-md outline-none focus-visible:ring-2 focus-visible:ring-accent-algorithms"
                   transition={transition}
-                />
-                <span className="font-mono text-xs text-muted">
-                  {item.value}
-                </span>
-              </motion.div>
-            );
-          })}
-        </div>
+                >
+                  <motion.div
+                    animate={{
+                      height: `${height}px`,
+                      opacity: isActive ? 1 : 0.6,
+                      scale: isActive ? 1.06 : 1,
+                    }}
+                    className={`w-full rounded-t-md ${
+                      isActive
+                        ? "bg-accent-algorithms"
+                        : "bg-accent-algorithms/60"
+                    }`}
+                    transition={transition}
+                  />
+                  <span className="font-mono text-xs text-muted">
+                    {item.value}
+                  </span>
+                </motion.div>
+              );
+            })}
+          </div>
+        )}
       </div>
 
       <SimulationControls

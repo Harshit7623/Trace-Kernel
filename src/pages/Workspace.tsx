@@ -547,6 +547,56 @@ function GeneratedConceptContent({
   );
 }
 
+function SimulationLoadingPreview({
+  title,
+  summary,
+  shouldReduceMotion,
+}: {
+  title: string;
+  summary: string;
+  shouldReduceMotion: boolean | null;
+}) {
+  return (
+    <section
+      aria-busy="true"
+      aria-label={`Preparing ${title} simulation`}
+      className="rounded-2xl border border-border bg-surface p-6 sm:p-8"
+    >
+      <div className="flex items-start gap-3">
+        <span className="rounded-xl border border-border bg-background p-2.5 text-accent-algorithms">
+          <LoaderCircle
+            size={18}
+            aria-hidden="true"
+            className={shouldReduceMotion ? undefined : "animate-spin"}
+          />
+        </span>
+        <div>
+          <p className="font-mono text-[10px] uppercase tracking-[.18em] text-accent-algorithms">
+            Interactive model
+          </p>
+          <h2 className="mt-1 text-lg font-semibold">{title}</h2>
+          <p className="mt-2 max-w-xl text-sm leading-relaxed text-muted">
+            {summary}
+          </p>
+          <p className="mt-4 font-mono text-xs text-muted">
+            Preparing initial state…
+          </p>
+        </div>
+      </div>
+      <div
+        className="mt-6 grid h-28 grid-cols-5 items-end gap-2 rounded-xl border border-border bg-background p-4"
+        aria-hidden="true"
+      >
+        <i className="h-8 rounded-md bg-surface-hover" />
+        <i className="h-14 rounded-md bg-surface-hover" />
+        <i className="h-20 rounded-md bg-surface-hover" />
+        <i className="h-11 rounded-md bg-surface-hover" />
+        <i className="h-16 rounded-md bg-surface-hover" />
+      </div>
+    </section>
+  );
+}
+
 export default function Workspace() {
   const shouldReduceMotion = useReducedMotion();
   const [chatOpen, setChatOpen] = useState(false);
@@ -719,7 +769,11 @@ export default function Workspace() {
                 ) : (
                   <Suspense
                     fallback={
-                      <div className="h-72 animate-pulse rounded-2xl bg-surface" />
+                      <SimulationLoadingPreview
+                        title={concept.title}
+                        summary={concept.summary}
+                        shouldReduceMotion={shouldReduceMotion}
+                      />
                     }
                   >
                     {Simulation && (
