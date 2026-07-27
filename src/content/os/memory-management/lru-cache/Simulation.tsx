@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import {
   SimulationControls,
   type SimulationSpeed,
@@ -93,6 +93,7 @@ export default function LRUCacheSimulation({
   const [step, setStep] = useState(0);
   const [playing, setPlaying] = useState(false);
   const [speed, setSpeed] = useState<SimulationSpeed>(1);
+  const reduceMotion = useReducedMotion();
 
   useEffect(() => {
     if (!playing || externalStep !== undefined) return undefined;
@@ -116,9 +117,17 @@ export default function LRUCacheSimulation({
     Math.min(states.length - 1, externalStep ?? step),
   );
   const current = states[currentStep];
+  const statsUpToNow = states.slice(0, currentStep + 1);
+  const hits = statsUpToNow.filter((state) => state.event === "hit").length;
+  const misses = statsUpToNow.filter((state) => state.event !== "hit").length;
+  const total = statsUpToNow.length;
+  const hitRate = total > 0 ? Math.round((hits / total) * 100) : 0;
+  const transition = reduceMotion
+    ? { duration: 0 }
+    : { type: "spring" as const, stiffness: 280, damping: 24 };
 
   return (
-    <div className="p-0">
+    <div className="space-y-4 p-0">
       <div className="mb-5 flex flex-wrap items-start justify-between gap-3">
         <div>
           <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
@@ -141,6 +150,32 @@ export default function LRUCacheSimulation({
         ) : null}
       </div>
 
+      <section className="mb-4" aria-label="Cache hit and miss statistics">
+        <div className="flex flex-wrap justify-center gap-3 sm:justify-start">
+          <div className="flex flex-col items-center rounded-xl border border-border bg-surface/30 px-4 py-2.5">
+            <span className="font-mono text-[0.6rem] uppercase tracking-[0.12em] text-muted">Hits</span>
+            <strong className="mt-0.5 font-mono text-lg font-bold text-success">{hits}</strong>
+          </div>
+          <div className="flex flex-col items-center rounded-xl border border-border bg-surface/30 px-4 py-2.5">
+            <span className="font-mono text-[0.6rem] uppercase tracking-[0.12em] text-muted">Misses</span>
+            <strong className="mt-0.5 font-mono text-lg font-bold text-error">{misses}</strong>
+          </div>
+          <div className="flex flex-col items-center rounded-xl border border-border bg-surface/30 px-4 py-2.5">
+            <span className="font-mono text-[0.6rem] uppercase tracking-[0.12em] text-muted">Hit rate</span>
+            <strong className="mt-0.5 font-mono text-lg font-bold text-accent-os">{total > 0 ? `${hitRate}%` : "—"}</strong>
+          </div>
+        </div>
+        <div className="mt-3 h-1.5 overflow-hidden rounded-full bg-border">
+          <motion.div
+            initial={false}
+            animate={{ width: `${hitRate}%` }}
+            transition={transition}
+            className="h-full rounded-full"
+            style={{ backgroundColor: "color-mix(in oklab, var(--success) 70%, var(--accent-os))" }}
+          />
+        </div>
+      </section>
+
       <section
         className="rounded-xl border border-border bg-surface/30 p-4 sm:p-5"
         aria-label="LRU cache state"
@@ -154,8 +189,9 @@ export default function LRUCacheSimulation({
               <span className="font-mono text-sm text-muted">page</span>
               <motion.strong
                 key={current.access}
-                initial={{ opacity: 0, y: -4 }}
+                initial={reduceMotion ? false : { opacity: 0, y: -4 }}
                 animate={{ opacity: 1, y: 0 }}
+                transition={transition}
                 className="font-mono text-xl text-accent-os"
               >
                 {current.access}
@@ -169,7 +205,8 @@ export default function LRUCacheSimulation({
           </div>
           {current.evicted !== null ? (
             <motion.div
-              initial={{ opacity: 0, x: 8 }}
+              initial={reduceMotion ? false : { opacity: 0, x: 8 }}
+              transition={transition}
               animate={{ opacity: 1, x: 0 }}
               className="rounded-lg border border-error/40 bg-error/10 px-3 py-2"
             >
@@ -188,7 +225,7 @@ export default function LRUCacheSimulation({
         </div>
 
         <div className="mt-5 overflow-x-auto pb-1">
-          <div className="min-w-[30rem]">
+          <div className="min-w-[28rem]">
             <div className="mb-2 flex items-center justify-between font-mono text-[0.62rem] uppercase tracking-[0.14em] text-muted">
               <span>Most recently used</span>
               <span>Least recently used</span>
@@ -204,15 +241,15 @@ export default function LRUCacheSimulation({
                   <motion.article
                     key={page}
                     layout="position"
-                    initial={{ opacity: 0, y: 12 }}
+                    initial={reduceMotion ? false : { opacity: 0, y: 12 }}
                     animate={{
                       opacity: 1,
                       y: wasRecentlyAccessed ? -4 : 0,
                       scale: wasRecentlyAccessed ? 1.035 : 1,
                     }}
-                    transition={{ type: "spring", stiffness: 300, damping: 24 }}
+                    transition={transition}
                     className={
-                      "relative flex min-h-24 min-w-24 flex-1 flex-col justify-between overflow-hidden rounded-xl border p-3 " +
+                      "relative flex min-h-[5.5rem] min-w-[5.5rem] flex-1 flex-col justify-between overflow-hidden rounded-xl border p-2.5 sm:p-3 " +
                       (wasRecentlyAccessed
                         ? "border-accent-os bg-accent-os/15"
                         : isLru
@@ -221,7 +258,7 @@ export default function LRUCacheSimulation({
                     }
                   >
                     <div className="flex items-center justify-between gap-2">
-                      <span className="font-mono text-[0.58rem] uppercase tracking-[0.1em] text-muted">
+                      <span className="font-mono text-[0.54rem] uppercase tracking-[0.1em] text-muted">
                         {isMru ? "MRU" : isLru ? "LRU" : "cached"}
                       </span>
                       {wasRecentlyAccessed && wasInCache ? (
@@ -232,7 +269,7 @@ export default function LRUCacheSimulation({
                     </div>
                     <strong
                       className={
-                        "font-mono text-2xl " +
+                        "font-mono text-xl sm:text-2xl " +
                         (wasRecentlyAccessed
                           ? "text-accent-os"
                           : isLru
@@ -242,14 +279,15 @@ export default function LRUCacheSimulation({
                     >
                       {page}
                     </strong>
-                    <span className="font-mono text-[0.58rem] text-muted">
+                    <span className="font-mono text-[0.56rem] text-muted">
                       slot {index + 1}
                     </span>
                     {wasRecentlyAccessed ? (
                       <motion.span
                         aria-hidden="true"
-                        initial={{ opacity: 0.1, scaleX: 0.4 }}
+                        initial={reduceMotion ? false : { opacity: 0.1, scaleX: 0.4 }}
                         animate={{ opacity: 0.72, scaleX: 1 }}
+                        transition={transition}
                         className="absolute inset-x-3 bottom-0 h-0.5 origin-left bg-accent-os"
                       />
                     ) : null}
@@ -260,20 +298,20 @@ export default function LRUCacheSimulation({
               {Array.from({ length: CAPACITY - current.cache.length }).map((_, index) => (
                 <div
                   key={"empty-" + index}
-                  className="flex min-h-24 min-w-24 flex-1 flex-col justify-between rounded-xl border border-dashed border-border bg-background/40 p-3"
+                  className="flex min-h-[5.5rem] min-w-[5.5rem] flex-1 flex-col justify-between rounded-xl border border-dashed border-border bg-background/40 p-2.5 sm:p-3"
                 >
-                  <span className="font-mono text-[0.58rem] uppercase tracking-[0.1em] text-muted">
+                  <span className="font-mono text-[0.54rem] uppercase tracking-[0.1em] text-muted">
                     available
                   </span>
                   <span className="font-mono text-xl text-muted">·</span>
-                  <span className="font-mono text-[0.58rem] text-muted">empty</span>
+                  <span className="font-mono text-[0.56rem] text-muted">empty</span>
                 </div>
               ))}
             </div>
           </div>
         </div>
 
-        <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2 border-t border-border pt-3 font-mono text-[0.64rem] text-muted">
+        <div className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-2 border-t border-border pt-3 font-mono text-[0.64rem] text-muted">
           <span className="flex items-center gap-1.5">
             <i className="h-2 w-2 rounded-full bg-accent-os" />
             accessed / MRU
@@ -346,6 +384,9 @@ export default function LRUCacheSimulation({
             );
           })}
         </div>
+        <p className="mt-2 text-right font-mono text-[0.62rem] text-muted">
+          Accessed: {total} / Hits: {hits} / Misses: {misses}
+        </p>
       </section>
 
       {externalStep === undefined ? (
