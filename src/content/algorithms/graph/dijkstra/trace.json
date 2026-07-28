@@ -1,0 +1,93 @@
+{
+  "language": "c",
+  "sourceCode": "void dijkstra(Graph *graph, int source) {\n  int dist[MAX_NODES];\n  bool settled[MAX_NODES] = {false};\n\n  for (int v = 0; v < graph->count; v++) {\n    dist[v] = INF;\n  }\n  dist[source] = 0;\n\n  while (hasUnsettledVertex(graph, settled)) {\n    int u = extractMin(dist, settled);\n    settled[u] = true;\n\n    forEach (Edge edge in graph->adj[u]) {\n      int candidate = dist[u] + edge.weight;\n      if (!settled[edge.to] && candidate < dist[edge.to]) {\n        dist[edge.to] = candidate;\n      }\n    }\n  }\n}",
+  "steps": [
+    {
+      "line": 8,
+      "variables": {
+        "source": "A",
+        "dist": { "A": 0, "B": "∞", "C": "∞", "D": "∞", "E": "∞", "F": "∞" },
+        "settled": [],
+        "frontier": ["A"]
+      },
+      "callStack": ["dijkstra(graph, A)"],
+      "stdout": "Initialize the source distance to 0; every other vertex is unreached."
+    },
+    {
+      "line": 17,
+      "variables": {
+        "u": "A",
+        "dist[u]": 0,
+        "relaxed": ["A→B = 4", "A→C = 2"],
+        "frontier": ["C:2", "B:4"],
+        "settled": ["A"]
+      },
+      "callStack": ["dijkstra(graph, A)", "relaxEdges(A)"],
+      "stdout": "Extract A, settle it, and record its two reachable tentative distances."
+    },
+    {
+      "line": 17,
+      "variables": {
+        "u": "C",
+        "dist[u]": 2,
+        "candidate": "2 + 3 = 5",
+        "updated": "dist[E] = 5",
+        "frontier": ["B:4", "E:5"],
+        "settled": ["A", "C"]
+      },
+      "callStack": ["dijkstra(graph, A)", "relaxEdges(C)"],
+      "stdout": "C is cheapest next. Relaxing C→E reaches E at distance 5."
+    },
+    {
+      "line": 17,
+      "variables": {
+        "u": "B",
+        "dist[u]": 4,
+        "candidate": "4 + 10 = 14",
+        "updated": "dist[D] = 14",
+        "frontier": ["E:5", "D:14"],
+        "settled": ["A", "C", "B"]
+      },
+      "callStack": ["dijkstra(graph, A)", "relaxEdges(B)"],
+      "stdout": "B proposes the first route to D, although it may still be improved."
+    },
+    {
+      "line": 17,
+      "variables": {
+        "u": "E",
+        "dist[u]": 5,
+        "relaxed": ["E→D: 5 + 4 = 9", "E→F: 5 + 7 = 12"],
+        "frontier": ["D:9", "F:12"],
+        "settled": ["A", "C", "B", "E"]
+      },
+      "callStack": ["dijkstra(graph, A)", "relaxEdges(E)"],
+      "stdout": "E improves D to 9 and discovers F at distance 12."
+    },
+    {
+      "line": 16,
+      "variables": {
+        "u": "D",
+        "dist[u]": 9,
+        "candidate": "9 + 11 = 20",
+        "dist[F]": 12,
+        "update": false,
+        "settled": ["A", "C", "B", "E", "D"]
+      },
+      "callStack": ["dijkstra(graph, A)", "relaxEdges(D)"],
+      "stdout": "D cannot improve F: its candidate distance 20 loses to the known distance 12."
+    },
+    {
+      "line": 11,
+      "variables": {
+        "u": "F",
+        "dist[u]": 12,
+        "frontier": [],
+        "settled": ["A", "C", "B", "E", "D", "F"],
+        "finalDistances": { "A": 0, "B": 4, "C": 2, "D": 9, "E": 5, "F": 12 }
+      },
+      "callStack": ["dijkstra(graph, A)"],
+      "stdout": "Extract F last. Every shortest distance from A is now final."
+    }
+  ],
+  "stepMap": [0, 1, 2, 3, 4, 5, 6]
+}

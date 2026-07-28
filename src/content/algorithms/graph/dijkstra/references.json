@@ -1,0 +1,30 @@
+[
+  {
+    "title": "Shortest Paths — CLRS Chapter 24",
+    "type": "book",
+    "source": "Introduction to Algorithms, Cormen, Leiserson, Rivest, and Stein",
+    "url": "https://mitpress.mit.edu/9780262046305/introduction-to-algorithms/",
+    "verified": true
+  },
+  {
+    "title": "A Note on Two Problems in Connexion with Graphs",
+    "type": "paper",
+    "source": "Edsger W. Dijkstra, Numerische Mathematik (1959)",
+    "url": "https://doi.org/10.1007/BF01386390",
+    "verified": true
+  },
+  {
+    "title": "Dijkstra's Algorithm",
+    "type": "video",
+    "source": "Abdul Bari",
+    "url": "https://www.youtube.com/watch?v=XB4MIexjvY0",
+    "verified": true
+  },
+  {
+    "title": "Dijkstra's Algorithm",
+    "type": "article",
+    "source": "Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm",
+    "verified": true
+  }
+]

@@ -1,0 +1,30 @@
+[
+  {
+    "title": "Topological Sort — CLRS Section 22.4",
+    "type": "book",
+    "source": "Introduction to Algorithms, Cormen, Leiserson, Rivest, and Stein",
+    "url": "https://mitpress.mit.edu/9780262046305/introduction-to-algorithms/",
+    "verified": true
+  },
+  {
+    "title": "Topological Sorting of Large Networks",
+    "type": "paper",
+    "source": "Arthur B. Kahn, Communications of the ACM (1962)",
+    "url": "https://doi.org/10.1145/368996.369025",
+    "verified": true
+  },
+  {
+    "title": "Topological Sort Algorithm",
+    "type": "video",
+    "source": "Tushar Roy — YouTube",
+    "url": "https://www.youtube.com/watch?v=ddTC4Zovtbc",
+    "verified": true
+  },
+  {
+    "title": "Topological Sorting",
+    "type": "article",
+    "source": "Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/Topological_sorting",
+    "verified": true
+  }
+]

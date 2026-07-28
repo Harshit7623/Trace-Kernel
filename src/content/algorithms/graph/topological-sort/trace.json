@@ -1,0 +1,88 @@
+{
+  "language": "c",
+  "sourceCode": "void topologicalSort(Graph *graph) {\n  int inDegree[MAX_NODES] = {0};\n  Queue queue = createQueue();\n  List order = createList();\n\n  forEach (Edge edge in graph->edges) {\n    inDegree[edge.to]++;\n  }\n  forEach (Vertex v in graph->vertices) {\n    if (inDegree[v] == 0) enqueue(&queue, v);\n  }\n\n  while (!isEmpty(&queue)) {\n    Vertex current = dequeue(&queue);\n    append(&order, current);\n\n    forEach (Vertex next in graph->adj[current]) {\n      inDegree[next]--;\n      if (inDegree[next] == 0) enqueue(&queue, next);\n    }\n  }\n}",
+  "steps": [
+    {
+      "line": 10,
+      "variables": {
+        "inDegree": { "Build": 0, "Lint": 1, "Test": 1, "Bundle": 2, "Deploy": 1, "Notify": 1 },
+        "queue": ["Build"],
+        "order": []
+      },
+      "callStack": ["topologicalSort(pipeline)"],
+      "stdout": "Build is the only zero-dependency task, so it initializes the queue."
+    },
+    {
+      "line": 18,
+      "variables": {
+        "current": "Build",
+        "removedEdges": ["Build→Lint", "Build→Test"],
+        "inDegree": { "Lint": 0, "Test": 0, "Bundle": 2 },
+        "queue": ["Lint", "Test"],
+        "order": ["Build"]
+      },
+      "callStack": ["topologicalSort(pipeline)", "process(Build)"],
+      "stdout": "Removing Build's dependencies frees both Lint and Test for the queue."
+    },
+    {
+      "line": 17,
+      "variables": {
+        "current": "Lint",
+        "next": "Bundle",
+        "inDegree[Bundle]": 1,
+        "queue": ["Test"],
+        "order": ["Build", "Lint"]
+      },
+      "callStack": ["topologicalSort(pipeline)", "process(Lint)"],
+      "stdout": "Lint removes one Bundle dependency, but Test still has to finish."
+    },
+    {
+      "line": 18,
+      "variables": {
+        "current": "Test",
+        "next": "Bundle",
+        "inDegree[Bundle]": 0,
+        "queue": ["Bundle"],
+        "order": ["Build", "Lint", "Test"]
+      },
+      "callStack": ["topologicalSort(pipeline)", "process(Test)"],
+      "stdout": "Test removes Bundle's final incoming edge, so Bundle joins the queue."
+    },
+    {
+      "line": 18,
+      "variables": {
+        "current": "Bundle",
+        "next": "Deploy",
+        "inDegree[Deploy]": 0,
+        "queue": ["Deploy"],
+        "order": ["Build", "Lint", "Test", "Bundle"]
+      },
+      "callStack": ["topologicalSort(pipeline)", "process(Bundle)"],
+      "stdout": "Bundle completes, leaving Deploy with no unresolved dependency."
+    },
+    {
+      "line": 18,
+      "variables": {
+        "current": "Deploy",
+        "next": "Notify",
+        "inDegree[Notify]": 0,
+        "queue": ["Notify"],
+        "order": ["Build", "Lint", "Test", "Bundle", "Deploy"]
+      },
+      "callStack": ["topologicalSort(pipeline)", "process(Deploy)"],
+      "stdout": "Deploy frees the final task, Notify."
+    },
+    {
+      "line": 14,
+      "variables": {
+        "current": "Notify",
+        "queue": [],
+        "order": ["Build", "Lint", "Test", "Bundle", "Deploy", "Notify"],
+        "emitted": 6
+      },
+      "callStack": ["topologicalSort(pipeline)"],
+      "stdout": "Notify is emitted and the queue is empty: the DAG has a valid topological order."
+    }
+  ],
+  "stepMap": [0, 1, 2, 3, 4, 5, 6]
+}
