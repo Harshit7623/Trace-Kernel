@@ -1,0 +1,30 @@
+[
+  {
+    "title": "Operating System Concepts — Chapter 9: Virtual Memory",
+    "type": "book",
+    "source": "Silberschatz, Galvin, and Gagne",
+    "url": "https://www.os-book.com/OS10/index.html",
+    "verified": true
+  },
+  {
+    "title": "Translation-Lookaside Buffers",
+    "type": "book",
+    "source": "Operating Systems: Three Easy Pieces",
+    "url": "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-tlbs.pdf",
+    "verified": true
+  },
+  {
+    "title": "MMU, Paging, and the TLB",
+    "type": "video",
+    "source": "Neso Academy",
+    "url": "https://www.youtube.com/watch?v=Z4kSOv49GNc",
+    "verified": true
+  },
+  {
+    "title": "Translation lookaside buffer",
+    "type": "article",
+    "source": "Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/Translation_lookaside_buffer",
+    "verified": true
+  }
+]

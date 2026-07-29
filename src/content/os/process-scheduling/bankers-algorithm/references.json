@@ -1,0 +1,30 @@
+[
+  {
+    "title": "Operating System Concepts — Chapter 8: Deadlocks",
+    "type": "book",
+    "source": "Silberschatz, Galvin, and Gagne",
+    "url": "https://www.os-book.com/OS10/index.html",
+    "verified": true
+  },
+  {
+    "title": "Cooperating Sequential Processes",
+    "type": "paper",
+    "source": "Edsger W. Dijkstra, 1965",
+    "url": "https://www.cs.utexas.edu/users/EWD/transcriptions/EWD01xx/EWD123.html",
+    "verified": true
+  },
+  {
+    "title": "Banker's Algorithm",
+    "type": "video",
+    "source": "Neso Academy",
+    "url": "https://www.youtube.com/watch?v=FjFoQpP2H3A",
+    "verified": true
+  },
+  {
+    "title": "Banker's algorithm",
+    "type": "article",
+    "source": "Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/Banker%27s_algorithm",
+    "verified": true
+  }
+]

@@ -1,0 +1,30 @@
+[
+  {
+    "title": "Operating System Concepts — Chapter 6: Process Synchronization",
+    "type": "book",
+    "source": "Silberschatz, Galvin, and Gagne",
+    "url": "https://www.os-book.com/OS10/index.html",
+    "verified": true
+  },
+  {
+    "title": "Semaphores",
+    "type": "book",
+    "source": "Operating Systems: Three Easy Pieces",
+    "url": "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-sema.pdf",
+    "verified": true
+  },
+  {
+    "title": "Producer Consumer Problem Using Semaphores",
+    "type": "video",
+    "source": "Neso Academy",
+    "url": "https://www.youtube.com/watch?v=FWYwBiZaEoY",
+    "verified": true
+  },
+  {
+    "title": "Producer–consumer problem",
+    "type": "article",
+    "source": "Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/Producer%E2%80%93consumer_problem",
+    "verified": true
+  }
+]

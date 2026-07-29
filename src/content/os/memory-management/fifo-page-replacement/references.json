@@ -1,0 +1,6 @@
+[
+  {"title":"Operating System Concepts, Chapter 10","type":"book","source":"Abraham Silberschatz, Peter Baer Galvin, and Greg Gagne","url":"https://www.os-book.com/OS10/slide-dir/","verified":true},
+  {"title":"Modern Operating Systems: Paging","type":"book","source":"Andrew S. Tanenbaum and Herbert Bos","url":"https://www.pearson.com/en-us/subject-catalog/p/modern-operating-systems/P200000003295","verified":true},
+  {"title":"FIFO Page Replacement Algorithm","type":"video","source":"Neso Academy","url":"https://www.youtube.com/watch?v=I9K5eMveA84","verified":true},
+  {"title":"Page replacement algorithm","type":"article","source":"Wikipedia","url":"https://en.wikipedia.org/wiki/Page_replacement_algorithm","verified":true}
+]
