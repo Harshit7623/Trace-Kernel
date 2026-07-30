@@ -1,0 +1,30 @@
+[
+  {
+    "title": "Consistent Hashing and Random Trees",
+    "type": "paper",
+    "source": "Karger et al., 1997",
+    "url": "https://www.cs.princeton.edu/courses/archive/fall09/cos518/papers/chash.pdf",
+    "verified": true
+  },
+  {
+    "title": "Designing Data-Intensive Applications — Chapter 6: Partitioning",
+    "type": "book",
+    "source": "Martin Kleppmann",
+    "url": "https://dataintensive.net/",
+    "verified": true
+  },
+  {
+    "title": "Consistent Hashing Explained",
+    "type": "video",
+    "source": "ByteByteGo",
+    "url": "https://www.youtube.com/watch?v=ZAoL9Qn-aJQ",
+    "verified": true
+  },
+  {
+    "title": "Consistent hashing",
+    "type": "article",
+    "source": "Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/Consistent_hashing",
+    "verified": true
+  }
+]

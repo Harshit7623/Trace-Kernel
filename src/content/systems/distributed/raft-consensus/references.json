@@ -1,0 +1,30 @@
+[
+  {
+    "title": "In Search of an Understandable Consensus Algorithm",
+    "type": "paper",
+    "source": "Diego Ongaro and John Ousterhout, USENIX ATC 2014",
+    "url": "https://raft.github.io/raft.pdf",
+    "verified": true
+  },
+  {
+    "title": "The Secret Lives of Data — Raft Visualization",
+    "type": "tool",
+    "source": "Raft",
+    "url": "https://raft.github.io/",
+    "verified": true
+  },
+  {
+    "title": "Designing Data-Intensive Applications — Chapter 9",
+    "type": "book",
+    "source": "Martin Kleppmann",
+    "url": "https://dataintensive.net/",
+    "verified": true
+  },
+  {
+    "title": "Raft Consensus Algorithm Explained",
+    "type": "video",
+    "source": "ByteByteGo",
+    "url": "https://www.youtube.com/watch?v=IujMVjKvWP4",
+    "verified": true
+  }
+]
