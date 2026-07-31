@@ -1,0 +1,30 @@
+[
+  {
+    "title": "Understanding Ownership",
+    "type": "book",
+    "source": "The Rust Programming Language, Chapter 4",
+    "url": "https://doc.rust-lang.org/book/ch04-00-understanding-ownership.html",
+    "verified": true
+  },
+  {
+    "title": "Rust for Rustaceans, Chapter 1",
+    "type": "book",
+    "source": "Jon Gjengset",
+    "url": "https://rust-for-rustaceans.com/",
+    "verified": true
+  },
+  {
+    "title": "Rust Ownership in 5 Minutes",
+    "type": "video",
+    "source": "Fireship",
+    "url": "https://www.youtube.com/watch?v=5C_HPTJg5ek",
+    "verified": true
+  },
+  {
+    "title": "The Rustonomicon: Ownership",
+    "type": "doc",
+    "source": "Rust documentation",
+    "url": "https://doc.rust-lang.org/nomicon/ownership.html",
+    "verified": true
+  }
+]
