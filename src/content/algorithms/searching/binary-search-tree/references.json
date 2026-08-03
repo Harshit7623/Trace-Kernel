@@ -1,0 +1,30 @@
+[
+  {
+    "title": "Binary Search Trees — CLRS Chapter 12",
+    "type": "book",
+    "source": "Introduction to Algorithms, Cormen, Leiserson, Rivest, and Stein",
+    "url": "https://mitpress.mit.edu/9780262046305/introduction-to-algorithms/",
+    "verified": true
+  },
+  {
+    "title": "Red-Black Trees — CLRS Chapter 13",
+    "type": "book",
+    "source": "Introduction to Algorithms, Cormen, Leiserson, Rivest, and Stein",
+    "url": "https://mitpress.mit.edu/9780262046305/introduction-to-algorithms/",
+    "verified": true
+  },
+  {
+    "title": "AVL Tree Rotations",
+    "type": "video",
+    "source": "YouTube",
+    "url": "https://www.youtube.com/watch?v=vRwi_UcZGjU",
+    "verified": true
+  },
+  {
+    "title": "AVL Tree",
+    "type": "article",
+    "source": "Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/AVL_tree",
+    "verified": true
+  }
+]

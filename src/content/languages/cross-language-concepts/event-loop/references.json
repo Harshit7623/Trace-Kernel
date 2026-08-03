@@ -1,0 +1,30 @@
+[
+  {
+    "title": "Tasks, microtasks, queues and schedules",
+    "type": "article",
+    "source": "Jake Archibald",
+    "url": "https://jakearchibald.com/2015/tasks-microtasks-queues-and-schedules/",
+    "verified": true
+  },
+  {
+    "title": "What the heck is the event loop anyway?",
+    "type": "video",
+    "source": "Philip Roberts — JSConf EU",
+    "url": "https://www.youtube.com/watch?v=8aGhZQkoFbQ",
+    "verified": true
+  },
+  {
+    "title": "JavaScript execution model",
+    "type": "doc",
+    "source": "MDN Web Docs",
+    "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Event_loop",
+    "verified": true
+  },
+  {
+    "title": "The event loop",
+    "type": "doc",
+    "source": "WHATWG HTML Living Standard",
+    "url": "https://html.spec.whatwg.org/multipage/webappapis.html#event-loops",
+    "verified": true
+  }
+]

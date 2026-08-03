@@ -1,0 +1,30 @@
+[
+  {
+    "title": "A Tour of C++, Chapter 13: Utilities",
+    "type": "book",
+    "source": "Bjarne Stroustrup",
+    "url": "https://www.stroustrup.com/tour3.html",
+    "verified": true
+  },
+  {
+    "title": "std::shared_ptr",
+    "type": "doc",
+    "source": "cppreference.com",
+    "url": "https://en.cppreference.com/w/cpp/memory/shared_ptr",
+    "verified": true
+  },
+  {
+    "title": "Smart Pointers in C++",
+    "type": "video",
+    "source": "The Cherno",
+    "url": "https://www.youtube.com/watch?v=UOB7-B2MfwA",
+    "verified": true
+  },
+  {
+    "title": "Smart Pointers",
+    "type": "article",
+    "source": "ISO C++ FAQ",
+    "url": "https://isocpp.org/wiki/faq/pointers",
+    "verified": true
+  }
+]

@@ -1,0 +1,211 @@
+{
+  "language": "c",
+  "sourceCode": "Node *insertAVL(Node *root, int value) {\n  if (root == NULL) return createNode(value);\n\n  if (value < root->value) {\n    root->left = insertAVL(root->left, value);\n  } else if (value > root->value) {\n    root->right = insertAVL(root->right, value);\n  }\n\n  updateHeight(root);\n  int balance = balanceFactor(root);\n\n  if (balance < -1 && value < root->left->value) {\n    return rotateRight(root);\n  }\n  if (balance > 1 && value > root->right->value) {\n    return rotateLeft(root);\n  }\n\n  return root;\n}",
+  "steps": [
+    {
+      "line": 2,
+      "variables": { "root": "NULL", "value": 30, "tree": "∅" },
+      "callStack": ["insertAVL(root: NULL, value: 30)"],
+      "stdout": "The tree is empty, so 30 is ready to become the root."
+    },
+    {
+      "line": 2,
+      "variables": { "value": 30, "createdNode": 30, "balance": 0, "tree": "30" },
+      "callStack": ["insertAVL(root: NULL, value: 30)"],
+      "stdout": "Create node 30. A one-node AVL tree is balanced."
+    },
+    {
+      "line": 4,
+      "variables": { "root": 30, "value": 20, "comparison": "20 < 30", "direction": "left" },
+      "callStack": ["insertAVL(root: 30, value: 20)"],
+      "stdout": "20 belongs in the left subtree of 30."
+    },
+    {
+      "line": 2,
+      "variables": { "value": 20, "createdNode": 20, "balance[30]": -1, "tree": "30 ← 20" },
+      "callStack": ["insertAVL(root: 30, value: 20)", "insertAVL(root: NULL, value: 20)"],
+      "stdout": "Create 20 as the left child; the root is still within AVL balance."
+    },
+    {
+      "line": 6,
+      "variables": { "root": 30, "value": 40, "comparison": "40 > 30", "direction": "right" },
+      "callStack": ["insertAVL(root: 30, value: 40)"],
+      "stdout": "40 follows the right branch from 30."
+    },
+    {
+      "line": 2,
+      "variables": { "value": 40, "createdNode": 40, "balance[30]": 0, "tree": "20 ← 30 → 40" },
+      "callStack": ["insertAVL(root: 30, value: 40)", "insertAVL(root: NULL, value: 40)"],
+      "stdout": "Place 40. The root now has equally tall subtrees."
+    },
+    {
+      "line": 4,
+      "variables": { "root": 30, "value": 10, "comparison": "10 < 30", "direction": "left" },
+      "callStack": ["insertAVL(root: 30, value: 10)"],
+      "stdout": "10 starts down the left side of the tree."
+    },
+    {
+      "line": 4,
+      "variables": { "root": 20, "value": 10, "comparison": "10 < 20", "direction": "left" },
+      "callStack": ["insertAVL(root: 30, value: 10)", "insertAVL(root: 20, value: 10)"],
+      "stdout": "10 is also smaller than 20, so recurse left once more."
+    },
+    {
+      "line": 2,
+      "variables": { "value": 10, "createdNode": 10, "balance[20]": -1, "balance[30]": -1 },
+      "callStack": ["insertAVL(root: 30, value: 10)", "insertAVL(root: 20, value: 10)", "insertAVL(root: NULL, value: 10)"],
+      "stdout": "Place 10. No balance factor exceeds one in magnitude."
+    },
+    {
+      "line": 4,
+      "variables": { "root": 30, "value": 25, "comparison": "25 < 30", "direction": "left" },
+      "callStack": ["insertAVL(root: 30, value: 25)"],
+      "stdout": "25 begins in the left subtree of 30."
+    },
+    {
+      "line": 6,
+      "variables": { "root": 20, "value": 25, "comparison": "25 > 20", "direction": "right" },
+      "callStack": ["insertAVL(root: 30, value: 25)", "insertAVL(root: 20, value: 25)"],
+      "stdout": "25 is larger than 20, so it takes the right child position."
+    },
+    {
+      "line": 2,
+      "variables": { "value": 25, "createdNode": 25, "balance[20]": 0, "treeSize": 5 },
+      "callStack": ["insertAVL(root: 30, value: 25)", "insertAVL(root: 20, value: 25)", "insertAVL(root: NULL, value: 25)"],
+      "stdout": "Place 25. Node 20 returns to perfect local balance."
+    },
+    {
+      "line": 6,
+      "variables": { "root": 30, "value": 50, "comparison": "50 > 30", "direction": "right" },
+      "callStack": ["insertAVL(root: 30, value: 50)"],
+      "stdout": "50 descends into the right subtree."
+    },
+    {
+      "line": 6,
+      "variables": { "root": 40, "value": 50, "comparison": "50 > 40", "direction": "right" },
+      "callStack": ["insertAVL(root: 30, value: 50)", "insertAVL(root: 40, value: 50)"],
+      "stdout": "50 is greater than 40, so recurse to the right."
+    },
+    {
+      "line": 2,
+      "variables": { "value": 50, "createdNode": 50, "balance[40]": 1, "balance[30]": 0 },
+      "callStack": ["insertAVL(root: 30, value: 50)", "insertAVL(root: 40, value: 50)", "insertAVL(root: NULL, value: 50)"],
+      "stdout": "Place 50. The larger tree is still AVL-balanced."
+    },
+    {
+      "line": 4,
+      "variables": { "root": 30, "value": 5, "comparison": "5 < 30", "direction": "left" },
+      "callStack": ["insertAVL(root: 30, value: 5)"],
+      "stdout": "5 follows the left branch from 30."
+    },
+    {
+      "line": 4,
+      "variables": { "root": 20, "value": 5, "comparison": "5 < 20", "direction": "left" },
+      "callStack": ["insertAVL(root: 30, value: 5)", "insertAVL(root: 20, value: 5)"],
+      "stdout": "5 continues left from 20."
+    },
+    {
+      "line": 4,
+      "variables": { "root": 10, "value": 5, "comparison": "5 < 10", "direction": "left" },
+      "callStack": ["insertAVL(root: 30, value: 5)", "insertAVL(root: 20, value: 5)", "insertAVL(root: 10, value: 5)"],
+      "stdout": "5 belongs left of 10."
+    },
+    {
+      "line": 2,
+      "variables": { "value": 5, "createdNode": 5, "balance[10]": -1, "balance[20]": -1 },
+      "callStack": ["insertAVL(root: 30, value: 5)", "insertAVL(root: 20, value: 5)", "insertAVL(root: 10, value: 5)", "insertAVL(root: NULL, value: 5)"],
+      "stdout": "Place 5. The deeper left spine is still within one level of balance."
+    },
+    {
+      "line": 4,
+      "variables": { "root": 30, "value": 3, "comparison": "3 < 30", "direction": "left" },
+      "callStack": ["insertAVL(root: 30, value: 3)"],
+      "stdout": "3 starts down the same left search path."
+    },
+    {
+      "line": 4,
+      "variables": { "root": 20, "value": 3, "comparison": "3 < 20", "direction": "left" },
+      "callStack": ["insertAVL(root: 30, value: 3)", "insertAVL(root: 20, value: 3)"],
+      "stdout": "3 remains left of 20."
+    },
+    {
+      "line": 4,
+      "variables": { "root": 10, "value": 3, "comparison": "3 < 10", "direction": "left" },
+      "callStack": ["insertAVL(root: 30, value: 3)", "insertAVL(root: 20, value: 3)", "insertAVL(root: 10, value: 3)"],
+      "stdout": "3 continues toward node 5."
+    },
+    {
+      "line": 4,
+      "variables": { "root": 5, "value": 3, "comparison": "3 < 5", "direction": "left" },
+      "callStack": ["insertAVL(root: 30, value: 3)", "insertAVL(root: 20, value: 3)", "insertAVL(root: 10, value: 3)", "insertAVL(root: 5, value: 3)"],
+      "stdout": "3 belongs to the left of 5."
+    },
+    {
+      "line": 2,
+      "variables": { "value": 3, "createdNode": 3, "balance[10]": -2, "case": "left-left" },
+      "callStack": ["insertAVL(root: 30, value: 3)", "insertAVL(root: 20, value: 3)", "insertAVL(root: 10, value: 3)", "insertAVL(root: 5, value: 3)", "insertAVL(root: NULL, value: 3)"],
+      "stdout": "Place 3. The path makes node 10 unbalanced."
+    },
+    {
+      "line": 10,
+      "variables": { "root": 10, "balance": -2, "value": 3, "case": "left-left" },
+      "callStack": ["insertAVL(root: 30, value: 3)", "rebalance(root: 10)"],
+      "stdout": "Recompute node 10's balance factor: −2 requires a right rotation."
+    },
+    {
+      "line": 13,
+      "variables": { "root": 10, "pivot": 5, "rotation": "right", "subtree": "5 with children 3 and 10" },
+      "callStack": ["insertAVL(root: 30, value: 3)", "rotateRight(root: 10)"],
+      "stdout": "Right-rotate at 10. Node 5 becomes the root of this repaired subtree."
+    },
+    {
+      "line": 10,
+      "variables": { "root": 5, "balance": 0, "tree": "subtree rooted at 5 is balanced" },
+      "callStack": ["insertAVL(root: 30, value: 3)", "rebalance(root: 5)"],
+      "stdout": "After the rotation, every affected balance factor is again within ±1."
+    },
+    {
+      "line": 6,
+      "variables": { "root": 30, "value": 60, "comparison": "60 > 30", "direction": "right" },
+      "callStack": ["insertAVL(root: 30, value: 60)"],
+      "stdout": "60 starts along the right side of the tree."
+    },
+    {
+      "line": 6,
+      "variables": { "root": 40, "value": 60, "comparison": "60 > 40", "direction": "right" },
+      "callStack": ["insertAVL(root: 30, value: 60)", "insertAVL(root: 40, value: 60)"],
+      "stdout": "60 is greater than 40, so follow its right branch."
+    },
+    {
+      "line": 6,
+      "variables": { "root": 50, "value": 60, "comparison": "60 > 50", "direction": "right" },
+      "callStack": ["insertAVL(root: 30, value: 60)", "insertAVL(root: 40, value: 60)", "insertAVL(root: 50, value: 60)"],
+      "stdout": "60 continues right from 50."
+    },
+    {
+      "line": 2,
+      "variables": { "value": 60, "createdNode": 60, "balance[40]": 2, "case": "right-right" },
+      "callStack": ["insertAVL(root: 30, value: 60)", "insertAVL(root: 40, value: 60)", "insertAVL(root: 50, value: 60)", "insertAVL(root: NULL, value: 60)"],
+      "stdout": "Place 60. Node 40 is now right-heavy by two levels."
+    },
+    {
+      "line": 10,
+      "variables": { "root": 40, "balance": 2, "value": 60, "case": "right-right" },
+      "callStack": ["insertAVL(root: 30, value: 60)", "rebalance(root: 40)"],
+      "stdout": "Balance factor +2 identifies a right-right case at node 40."
+    },
+    {
+      "line": 16,
+      "variables": { "root": 40, "pivot": 50, "rotation": "left", "subtree": "50 with children 40 and 60" },
+      "callStack": ["insertAVL(root: 30, value: 60)", "rotateLeft(root: 40)"],
+      "stdout": "Left-rotate at 40. Node 50 becomes the local subtree root."
+    },
+    {
+      "line": 19,
+      "variables": { "treeSize": 9, "root": 30, "balanced": true, "height": 4 },
+      "callStack": ["insertAVL(root: 30, value: 60)"],
+      "stdout": "All insertions and rotations are complete; the AVL tree is balanced."
+    }
+  ],
+  "stepMap": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33]
+}

@@ -1,0 +1,12 @@
+{
+  "id": "heap-sort",
+  "title": "Heap Sort",
+  "section": "algorithms",
+  "parentPath": "algorithms/sorting",
+  "order": 3,
+  "difficulty": "advanced",
+  "tags": ["sorting", "heap", "priority-queue", "in-place", "heapify"],
+  "prerequisites": [],
+  "summary": "Build a min-heap in-place, then extract elements one by one to produce a sorted array — all without extra memory.",
+  "accentSection": "algorithms"
+}

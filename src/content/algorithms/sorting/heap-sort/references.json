@@ -1,0 +1,30 @@
+[
+  {
+    "title": "Heapsort — CLRS Chapter 6",
+    "type": "book",
+    "source": "Introduction to Algorithms, Cormen, Leiserson, Rivest, and Stein",
+    "url": "https://mitpress.mit.edu/9780262046305/introduction-to-algorithms/",
+    "verified": true
+  },
+  {
+    "title": "Priority Queues and Heaps",
+    "type": "book",
+    "source": "Algorithms, 4th Edition — Robert Sedgewick and Kevin Wayne",
+    "url": "https://algs4.cs.princeton.edu/24pq/",
+    "verified": true
+  },
+  {
+    "title": "Heap Sort",
+    "type": "video",
+    "source": "YouTube",
+    "url": "https://www.youtube.com/watch?v=HqPJF2L5h9U",
+    "verified": true
+  },
+  {
+    "title": "Binary Heap",
+    "type": "article",
+    "source": "Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/Binary_heap",
+    "verified": true
+  }
+]

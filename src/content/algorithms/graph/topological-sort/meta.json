@@ -1,0 +1,12 @@
+{
+  "id": "topological-sort",
+  "title": "Topological Sort",
+  "section": "algorithms",
+  "parentPath": "algorithms/graph",
+  "order": 3,
+  "difficulty": "intermediate",
+  "tags": ["graph", "dag", "ordering", "kahn", "bfs", "in-degree"],
+  "prerequisites": ["breadth-first-search"],
+  "summary": "Peel zero-dependency nodes one at a time to reveal a valid execution order over any directed acyclic graph.",
+  "accentSection": "algorithms"
+}

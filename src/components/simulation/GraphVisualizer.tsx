@@ -244,6 +244,27 @@ export function GraphVisualizer({ spec }: GraphVisualizerProps) {
           )}
         </svg>
 
+        {positionedNodes.length === 0 ? (
+          <div
+            className="pointer-events-none absolute inset-0 grid place-items-center p-6 text-center"
+            role="status"
+          >
+            <div>
+              <div
+                className="mx-auto flex h-16 items-center justify-center -space-x-2"
+                aria-hidden="true"
+              >
+                <i className="h-9 w-9 rounded-full border border-border bg-surface-hover" />
+                <i className="h-12 w-12 rounded-full border border-border bg-surface" />
+                <i className="h-9 w-9 rounded-full border border-border bg-surface-hover" />
+              </div>
+              <p className="mt-3 font-mono text-xs text-muted">
+                This simulation starts without graph nodes.
+              </p>
+            </div>
+          </div>
+        ) : null}
+
         {positionedNodes.map((node) => {
           const isActive = activeNodeIds.has(node.id);
           const isVisited = visitedNodeIds.has(node.id);

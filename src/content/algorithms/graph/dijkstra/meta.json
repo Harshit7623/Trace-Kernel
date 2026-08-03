@@ -1,0 +1,12 @@
+{
+  "id": "dijkstra",
+  "title": "Dijkstra's Shortest Path",
+  "section": "algorithms",
+  "parentPath": "algorithms/graph",
+  "order": 2,
+  "difficulty": "advanced",
+  "tags": ["graph", "shortest-path", "greedy", "priority-queue", "weighted"],
+  "prerequisites": ["breadth-first-search"],
+  "summary": "Watch the greedy frontier expand outward, relaxing edges and locking in minimum distances one node at a time.",
+  "accentSection": "algorithms"
+}

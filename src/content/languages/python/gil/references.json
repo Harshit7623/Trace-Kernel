@@ -1,0 +1,30 @@
+[
+  {
+    "title": "Understanding the Python GIL",
+    "type": "video",
+    "source": "David Beazley — PyCon 2010",
+    "url": "https://www.youtube.com/watch?v=Obt-vMVdM8s",
+    "verified": true
+  },
+  {
+    "title": "ceval_gil.h",
+    "type": "doc",
+    "source": "CPython source code",
+    "url": "https://github.com/python/cpython/blob/main/Python/ceval_gil.h",
+    "verified": true
+  },
+  {
+    "title": "What Is the Python Global Interpreter Lock (GIL)?",
+    "type": "article",
+    "source": "Real Python",
+    "url": "https://realpython.com/python-gil/",
+    "verified": true
+  },
+  {
+    "title": "threading — Thread-based parallelism",
+    "type": "doc",
+    "source": "Python documentation",
+    "url": "https://docs.python.org/3/library/threading.html",
+    "verified": true
+  }
+]

@@ -1,0 +1,12 @@
+{
+  "id": "binary-search-tree",
+  "title": "Binary Search Tree",
+  "section": "algorithms",
+  "parentPath": "algorithms/searching",
+  "order": 2,
+  "difficulty": "advanced",
+  "tags": ["tree", "bst", "avl", "rotation", "balancing", "insertion"],
+  "prerequisites": ["binary-search"],
+  "summary": "Insert keys into a BST and watch AVL balance factors trigger left, right, and double rotations to keep the tree height-optimal.",
+  "accentSection": "algorithms"
+}

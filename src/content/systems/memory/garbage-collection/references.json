@@ -1,0 +1,30 @@
+[
+  {
+    "title": "The Garbage Collection Handbook",
+    "type": "book",
+    "source": "Richard Jones, Antony Hosking, and Eliot Moss",
+    "url": "https://gchandbook.org/",
+    "verified": true
+  },
+  {
+    "title": "Orinoco: V8's New Garbage Collector",
+    "type": "article",
+    "source": "V8 Blog",
+    "url": "https://v8.dev/blog/trash-talk",
+    "verified": true
+  },
+  {
+    "title": "Mark and Sweep Garbage Collection",
+    "type": "video",
+    "source": "Computerphile",
+    "url": "https://www.youtube.com/watch?v=c32zXYAK7CI",
+    "verified": true
+  },
+  {
+    "title": "Tracing garbage collection",
+    "type": "article",
+    "source": "Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/Tracing_garbage_collection",
+    "verified": true
+  }
+]

@@ -38,6 +38,22 @@ function describeStep(step: unknown) {
 }
 
 function StepListFallback({ steps }: { steps: unknown[] }) {
+  if (steps.length === 0) {
+    return (
+      <section
+        role="status"
+        className="rounded-2xl border border-border bg-surface p-6 text-center"
+      >
+        <p className="font-medium text-foreground">
+          This simulation has no operations to play yet.
+        </p>
+        <p className="mt-1 text-sm text-muted">
+          Its initial state is ready for inspection.
+        </p>
+      </section>
+    );
+  }
+
   return (
     <ol className="list-decimal space-y-2 pl-5 text-sm text-muted">
       {steps.map((step, index) => (

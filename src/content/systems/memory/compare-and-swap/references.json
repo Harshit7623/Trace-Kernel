@@ -1,0 +1,30 @@
+[
+  {
+    "title": "The Art of Multiprocessor Programming, Chapter 5",
+    "type": "book",
+    "source": "Maurice Herlihy and Nir Shavit",
+    "url": "https://dl.acm.org/doi/book/10.5555/2385452",
+    "verified": true
+  },
+  {
+    "title": "Atomic types",
+    "type": "doc",
+    "source": "Linux kernel documentation",
+    "url": "https://docs.kernel.org/atomic_t.html",
+    "verified": true
+  },
+  {
+    "title": "Lock-Free Programming (or, Juggling Razor Blades)",
+    "type": "video",
+    "source": "CppCon / Fedor Pikus",
+    "url": "https://www.youtube.com/watch?v=c1gO9aB9nbs",
+    "verified": true
+  },
+  {
+    "title": "Compare-and-swap",
+    "type": "article",
+    "source": "Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/Compare-and-swap",
+    "verified": true
+  }
+]
